@@ -1,12 +1,22 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
 import "../index.css"
-import {PageHeader} from "../page-header";
+import {PageHeader} from "../component/page-header";
 import contact from "../images/contact.png";
+import {i18n} from "../../i18n";
+import {connect} from "react-redux";
+import {Breadcrumbs} from "../component/breadcrumbs";
+import PropTypes from "prop-types";
 //import {Footer} from "../footer";
 
 
 class ContactReact extends React.Component{
+    static propTypes = {
+        // self
+        // React Redux
+        language: PropTypes.string.isRequired,
+        // React Router
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +24,7 @@ class ContactReact extends React.Component{
         }
     }
     render() {
+        const text = i18n(this.props.language).page.contact
         return (
             <div>
                 <PageHeader status = {6}/>
@@ -26,14 +37,7 @@ class ContactReact extends React.Component{
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="col-12">
-                            <div className="breadcrumbs">
-                                <ul className="flex flex-wrap align-items-center p-0 m-0">
-                                    <li><a href="#"><i className="fa fa-home" /> Home</a></li>
-                                    <li>Contact</li>
-                                </ul>
-                            </div>{/* .breadcrumbs */}
-                        </div>{/* .col */}
+                        <Breadcrumbs breadcrumbs={text.breadcrumb}/>
                     </div>{/* .row */}
                     <div className="row justify-content-between">
                         {/*<div class="col-12">*/}
@@ -47,9 +51,8 @@ class ContactReact extends React.Component{
                                 <h3>Contact Information</h3>
                                 {/*<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum. </p>*/}
                                 <ul className="p-0 m-0">
-                                    <li><span>Location:</span>10396 Tuscany Rd Ellicott City MD, 21042</li>
+                                    <li><span>Location:</span>Maryland, US</li>
                                     <li><span>Email:</span><a href="#">2019mayflowerartcenter@gmail.com</a></li>
-                                    <li><span>Phone:</span><a href="#">(410) 402-0521</a></li>
                                 </ul>
                             </div>{/* .contact-info */}
                         </div>{/* .col */}
@@ -61,4 +64,9 @@ class ContactReact extends React.Component{
         )
     }
 }
-export const Contact = withRouter(ContactReact)
+export const Contact = withRouter(
+    connect((state)=>{
+        return{language:state.language}
+    })(ContactReact)
+)
+//export const Contact = withRouter(ContactReact)

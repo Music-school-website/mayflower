@@ -1,16 +1,13 @@
 
 import React from "react";
 import {withRouter} from 'react-router-dom'
-import {Header} from "../nav-bar";
-import {Footer} from "../footer";
+import {Header} from "../component/nav-bar";
+import {Footer} from "../component/footer";
 //import {CourseCard} from "../courses/course-card";
-import "./index.css"
+import "../index.css"
 import "../icon/themify-icons.css"
-import news5 from "../images/news5.png"
-// import news6 from "../images/news6.png"
-// import news7 from "../images/news7.png"
-import imagesvideo from "../images/home4.png"
-//import piano from "../images/piano-at-home.jpg";
+import logo from "../images/LOGO2.png";
+//import imagesvideo from "../images/home4.png"
 import composition from "../images/composition.png"
 import history from "../images/history.jpg"
 import theory from "../images/theory.png"
@@ -46,11 +43,11 @@ class HomeReact extends React.Component{
                                     <div className="col-12">
                                         <div className="hero-content-wrap flex flex-column justify-content-center align-items-start">
                                             <header className="entry-header">
-                                                <h4>Welcome to the Sino-American Mayflower Art Center</h4>
-                                                <h1>best music school</h1>
+                                                <h4>Welcome to the Mayflower Art Center</h4>
+                                                <h1>BEST PART-TIME MUSIC SCHOOL</h1>
                                             </header>{/* .entry-header */}
                                             <div className="entry-content">
-                                                <p>The Mayflower art center provides students with courses on Composition, Music Theory, and Western Music History. These courses are the most professional in part-time music learning and college prep courses for most conservatories in the United States. (Instrumental performance courses will be gradually added as well in the future.) </p>
+                                                <p style={{fontSize:'18px'}}>The Mayflower art center provides students with courses on Composition, Music Theory, Aural skills and Western Music History. These courses are the most professional in part-time music learning and college prep courses for most conservatories in the United States. (Instrumental performance courses will be gradually added as well in the future.)  </p>
                                             </div>{/* .entry-content */}
                                             {/*<footer className="entry-footer read-more pointer" >*/}
                                             {/*    <a onClick={() => {this.props.history.push('/introduction');}}>read more</a>*/}
@@ -104,7 +101,7 @@ class HomeReact extends React.Component{
                                     <div className="entry-content">
                                         <p>Expect more in the future</p>
                                     </div>{/* .entry-content */}
-                                    <footer className="entry-footer read-more">
+                                    <footer className="entry-footer read-more pointer" onClick={()=>{this.props.history.push('/foundation')}}>
                                         <a  >read more<i className="fa fa-arrow-right" /></a>
                                     </footer>{/* .entry-footer */}
                                 </div>{/* .icon-box */}
@@ -128,7 +125,12 @@ class HomeReact extends React.Component{
                     <section className="about-section">
                         <div className="container">
                             <div className="row">
-                                <div className="col-12 col-lg-6 align-content-lg-stretch">
+                                <div className="col-12 col-lg-5 flex align-content-center mt-5 mt-lg-0">
+                                    <div className="MusicSchool-video position-relative">
+                                        <img src={logo} alt="" style={{width:'auto', height:'400px', marginRight:'-2vw'}} />
+                                    </div>{/* .MusicSchool-video */}
+                                </div>{/* .col */}
+                                <div className="col-12 col-lg-7 align-content-lg-stretch">
                                     <header className="heading">
                                         <h2 className="entry-title">About Us</h2>
                                         <p>
@@ -140,15 +142,11 @@ class HomeReact extends React.Component{
                                     </header>{/* .heading */}
 
                                 </div>{/* .col */}
-                                <div className="col-12 col-lg-6 flex align-content-center mt-5 mt-lg-0">
-                                    <div className="MusicSchool-video position-relative">
-                                        <img src={imagesvideo} alt="" style={{marginTop:'3vw',width:'auto', height:'400px'}} />
-                                    </div>{/* .MusicSchool-video */}
-                                </div>{/* .col */}
+
                             </div>{/* .row */}
                         </div>{/* .container */}
                     </section>{/* .about-section */}
-                    <section className="featured-courses vertical-column courses-wrap">
+                    <section className="featured-courses latest-news-events vertical-column courses-wrap">
                         <div className="container">
                             <div className="row mx-m-25">
                                 <div className="col-12 px-25">
@@ -190,68 +188,68 @@ class HomeReact extends React.Component{
                             </div>{/* .row */}
                         </div>{/* .container */}
                     </section>{/* .courses-wrap */}
-                    <section className="latest-news-events">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <header className="heading flex justify-content-between align-items-center">
-                                        <h2 className="entry-title">Latest News &amp; Events</h2>
-                                    </header>{/* .heading */}
-                                </div>{/* .col */}
-                                <div className="col-12 col-lg-12">
-                                    <div className="featured-event-content">
-                                        <figure className="event-thumbnail position-relative m-0">
-                                            <a href="https://mp.weixin.qq.com/s/5oYnAzYaCzSWuc5sCtcQMw"><img src={news5} alt="" /></a>
-                                            <div className="posted-date position-absolute">
-                                                <div className="day">10</div>
-                                                <div className="month">Jul</div>
-                                            </div>{/* .posted-date */}
-                                        </figure>{/* .event-thumbnail */}
-                                        <header className="entry-header flex flex-wrap align-items-center">
-                                            <h2 className="entry-title"><a href="https://mp.weixin.qq.com/s/5oYnAzYaCzSWuc5sCtcQMw">Student Yihao Wang, Yiru Zhao and Yida He won prices in the competitions</a></h2>
-                                            <div className="event-location"><i className="fa fa-map-marker" />International Composers Competition</div>
-                                            <div className="event-duration"><i className="fa fa-calendar" />10 Jul</div>
-                                        </header>{/* .entry-header */}
-                                    </div>{/* .featured-event-content */}
-                                </div>{/* .col */}
-                                {/*<div className="col-12 col-lg-6 mt-5 mt-lg-0">*/}
-                                {/*    <div className="event-content flex flex-wrap justify-content-between align-content-stretch">*/}
-                                {/*        <figure className="event-thumbnail">*/}
-                                {/*            <a href="http://www.capitalcityinfo.net/cci/2020/06/24/%E4%BA%94%E6%9C%88%E8%8A%B1%E5%BC%80%E7%BB%9A%E4%B8%BD/?from=timeline"><img src={news6} alt="" /></a>*/}
-                                {/*        </figure>/!* .course-thumbnail *!/*/}
-                                {/*        <div className="event-content-wrap">*/}
-                                {/*            <header className="entry-header">*/}
-                                {/*                <div className="posted-date">*/}
-                                {/*                    <i className="fa fa-calendar" /> 22 Mar 2018*/}
-                                {/*                </div>/!* .posted-date *!/*/}
-                                {/*                <h2 className="entry-title"><a href="http://www.capitalcityinfo.net/cci/2020/06/24/%E4%BA%94%E6%9C%88%E8%8A%B1%E5%BC%80%E7%BB%9A%E4%B8%BD/?from=timeline">The new vienna symphony 1 International Composer competition results</a></h2>*/}
+                    {/*<section className="latest-news-events">*/}
+                    {/*    <div className="container">*/}
+                    {/*        <div className="row">*/}
+                    {/*            <div className="col-12">*/}
+                    {/*                <header className="heading flex justify-content-between align-items-center">*/}
+                    {/*                    <h2 className="entry-title">Latest News &amp; Events</h2>*/}
+                    {/*                </header>/!* .heading *!/*/}
+                    {/*            </div>/!* .col *!/*/}
+                    {/*            <div className="col-12 col-lg-12">*/}
+                    {/*                <div className="featured-event-content">*/}
+                    {/*                    <figure className="event-thumbnail position-relative m-0">*/}
+                    {/*                        <a href="https://mp.weixin.qq.com/s/5oYnAzYaCzSWuc5sCtcQMw"><img src={news5} alt="" /></a>*/}
+                    {/*                        <div className="posted-date position-absolute">*/}
+                    {/*                            <div className="day">10</div>*/}
+                    {/*                            <div className="month">Jul</div>*/}
+                    {/*                        </div>/!* .posted-date *!/*/}
+                    {/*                    </figure>/!* .event-thumbnail *!/*/}
+                    {/*                    <header className="entry-header flex flex-wrap align-items-center">*/}
+                    {/*                        <h2 className="entry-title"><a href="https://mp.weixin.qq.com/s/5oYnAzYaCzSWuc5sCtcQMw">Student Yihao Wang, Yiru Zhao and Yida He won prices in the competitions</a></h2>*/}
+                    {/*                        <div className="event-location"><i className="fa fa-map-marker" />International Composers Competition</div>*/}
+                    {/*                        <div className="event-duration"><i className="fa fa-calendar" />10 Jul</div>*/}
+                    {/*                    </header>/!* .entry-header *!/*/}
+                    {/*                </div>/!* .featured-event-content *!/*/}
+                    {/*            </div>/!* .col *!/*/}
+                    {/*            /!*<div className="col-12 col-lg-6 mt-5 mt-lg-0">*!/*/}
+                    {/*            /!*    <div className="event-content flex flex-wrap justify-content-between align-content-stretch">*!/*/}
+                    {/*            /!*        <figure className="event-thumbnail">*!/*/}
+                    {/*            /!*            <a href="http://www.capitalcityinfo.net/cci/2020/06/24/%E4%BA%94%E6%9C%88%E8%8A%B1%E5%BC%80%E7%BB%9A%E4%B8%BD/?from=timeline"><img src={news6} alt="" /></a>*!/*/}
+                    {/*            /!*        </figure>/!* .course-thumbnail *!/*!/*/}
+                    {/*            /!*        <div className="event-content-wrap">*!/*/}
+                    {/*            /!*            <header className="entry-header">*!/*/}
+                    {/*            /!*                <div className="posted-date">*!/*/}
+                    {/*            /!*                    <i className="fa fa-calendar" /> 22 Mar 2018*!/*/}
+                    {/*            /!*                </div>/!* .posted-date *!/*!/*/}
+                    {/*            /!*                <h2 className="entry-title"><a href="http://www.capitalcityinfo.net/cci/2020/06/24/%E4%BA%94%E6%9C%88%E8%8A%B1%E5%BC%80%E7%BB%9A%E4%B8%BD/?from=timeline">The new vienna symphony 1 International Composer competition results</a></h2>*!/*/}
 
-                                {/*            </header>/!* .entry-header *!/*/}
-                                {/*            <div className="entry-content">*/}
-                                {/*                <p>He is a talented student in our school.</p>*/}
-                                {/*            </div>/!* .entry-content *!/*/}
-                                {/*        </div>/!* .event-content-wrap *!/*/}
-                                {/*    </div>/!* .event-content *!/*/}
-                                {/*    <div className="event-content flex flex-wrap justify-content-between align-content-lg-stretch">*/}
-                                {/*        <figure className="event-thumbnail">*/}
-                                {/*            <a href="http://www.ccom.edu.cn/xwyhd/xsjd/2020s/202006/t20200609_70535.html?from=timeline&isappinstalled=0"><img src={news7} alt="" /></a>*/}
-                                {/*        </figure>/!* .course-thumbnail *!/*/}
-                                {/*        <div className="event-content-wrap">*/}
-                                {/*            <header className="entry-header">*/}
-                                {/*                <div className="posted-date">*/}
-                                {/*                    <i className="fa fa-calendar" /> 22 Mar 2018*/}
-                                {/*                </div>/!* .posted-date *!/*/}
-                                {/*                <h2 className="entry-title"><a href="http://www.ccom.edu.cn/xwyhd/xsjd/2020s/202006/t20200609_70535.html?from=timeline&isappinstalled=0">Yida He won the price in the competiton</a></h2>*/}
-                                {/*            </header>/!* .entry-header *!/*/}
-                                {/*            <div className="entry-content">*/}
-                                {/*                <p>He is a talented student in our school.</p>*/}
-                                {/*            </div>/!* .entry-content *!/*/}
-                                {/*        </div>/!* .event-content-wrap *!/*/}
-                                {/*    </div>/!* .event-content *!/*/}
-                                {/*</div>/!* .col *!/*/}
-                            </div>{/* .row */}
-                        </div>{/* .container */}
-                    </section>{/* .latest-news-events */}
+                    {/*            /!*            </header>/!* .entry-header *!/*!/*/}
+                    {/*            /!*            <div className="entry-content">*!/*/}
+                    {/*            /!*                <p>He is a talented student in our school.</p>*!/*/}
+                    {/*            /!*            </div>/!* .entry-content *!/*!/*/}
+                    {/*            /!*        </div>/!* .event-content-wrap *!/*!/*/}
+                    {/*            /!*    </div>/!* .event-content *!/*!/*/}
+                    {/*            /!*    <div className="event-content flex flex-wrap justify-content-between align-content-lg-stretch">*!/*/}
+                    {/*            /!*        <figure className="event-thumbnail">*!/*/}
+                    {/*            /!*            <a href="http://www.ccom.edu.cn/xwyhd/xsjd/2020s/202006/t20200609_70535.html?from=timeline&isappinstalled=0"><img src={news7} alt="" /></a>*!/*/}
+                    {/*            /!*        </figure>/!* .course-thumbnail *!/*!/*/}
+                    {/*            /!*        <div className="event-content-wrap">*!/*/}
+                    {/*            /!*            <header className="entry-header">*!/*/}
+                    {/*            /!*                <div className="posted-date">*!/*/}
+                    {/*            /!*                    <i className="fa fa-calendar" /> 22 Mar 2018*!/*/}
+                    {/*            /!*                </div>/!* .posted-date *!/*!/*/}
+                    {/*            /!*                <h2 className="entry-title"><a href="http://www.ccom.edu.cn/xwyhd/xsjd/2020s/202006/t20200609_70535.html?from=timeline&isappinstalled=0">Yida He won the price in the competiton</a></h2>*!/*/}
+                    {/*            /!*            </header>/!* .entry-header *!/*!/*/}
+                    {/*            /!*            <div className="entry-content">*!/*/}
+                    {/*            /!*                <p>He is a talented student in our school.</p>*!/*/}
+                    {/*            /!*            </div>/!* .entry-content *!/*!/*/}
+                    {/*            /!*        </div>/!* .event-content-wrap *!/*!/*/}
+                    {/*            /!*    </div>/!* .event-content *!/*!/*/}
+                    {/*            /!*</div>/!* .col *!/*!/*/}
+                    {/*        </div>/!* .row *!/*/}
+                    {/*    </div>/!* .container *!/*/}
+                    {/*</section>/!* .latest-news-events *!/*/}
                     <Footer/>
                 </div>
 
