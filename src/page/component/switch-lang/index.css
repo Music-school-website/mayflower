@@ -5,3 +5,10 @@
     width:200px;
     z-index:9999
 }
+.remind{
+    position: absolute;
+    left: 40%;
+    top: 500px;
+    width:500px;
+    z-index:9999
+}

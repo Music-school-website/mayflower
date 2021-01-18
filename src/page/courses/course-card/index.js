@@ -1,7 +1,6 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
-import "./index.css"
-//import piano from "../../images/piano-at-home.jpg"
+import "../../index.css"
 import PropTypes from "prop-types";
 
 class CourseCardReact extends React.Component{

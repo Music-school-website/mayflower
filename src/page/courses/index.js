@@ -1,13 +1,24 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
 import "./index.css"
-import {PageHeader} from "../page/page-header";
-import {Footer} from "../page/footer";
+import {PageHeader} from "../component/page-header";
+import {Footer} from "../component/footer";
 import {CourseCard} from "./course-card";
 import composition from "../images/composition.png"
 import history from "../images/history.jpg"
 import theory from "../images/theory.png"
+import aural from "../images/aural2.jpg"
+import {i18n} from "../../i18n";
+import {connect} from "react-redux";
+import {Breadcrumbs} from "../component/breadcrumbs";
+import PropTypes from "prop-types";
 class CourseReact extends React.Component{
+    static propTypes = {
+        // self
+        // React Redux
+        language: PropTypes.string.isRequired,
+        // React Router
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -15,19 +26,13 @@ class CourseReact extends React.Component{
         }
     }
     render() {
+        const text = i18n(this.props.language).page.courses
         return (
             <div>
                 <PageHeader status = {2}/>
                 <div className="container">
                     <div className="row">
-                        <div className="col-12">
-                            <div className="breadcrumbs">
-                                <ul className="flex flex-wrap align-items-center p-0 m-0">
-                                    <li><a href="#"><i className="fa fa-home" /> Home</a></li>
-                                    <li>Courses</li>
-                                </ul>
-                            </div>{/* .breadcrumbs */}
-                        </div>{/* .col */}
+                        <Breadcrumbs breadcrumbs={text.breadcrumb}/>
                     </div>{/* .row */}
                     <div className="row">
                         <div className="col-12 col-lg-8">
@@ -58,6 +63,15 @@ class CourseReact extends React.Component{
                                             content = {"The Western Music History course explores the music of the 17th Century through the 21st Century. Musical concepts and developments, composers, musical examples, and class discussions will all be part of the 10-week course. "}
                                             // teacher = {""}
                                             url = {history}
+                                        />
+                                    </div>{/* .col */}
+                                    <div className="col-12 col-md-6 px-25">
+                                        <CourseCard
+                                            id = {"4"}
+                                            name = {"Aural Skills"}
+                                            content = {"Aural skills is equally crucial as in Music Theory, which is  required for individual musicality. This course is a two-level studies focusing on ear training, sight-singing, rhythm, and dictation. "}
+                                            // teacher = {""}
+                                            url = {aural}
                                         />
                                     </div>{/* .col */}
                                 </div>{/* .row */}
@@ -108,4 +122,9 @@ class CourseReact extends React.Component{
         )
     }
 }
-export const Course = withRouter(CourseReact)
+export const Course = withRouter(
+    connect((state)=>{
+        return{language:state.language}
+    })(CourseReact)
+)
+//export const Course = withRouter(CourseReact)

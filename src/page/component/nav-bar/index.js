@@ -1,13 +1,14 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
-import "../index.css"
-import "../icon/themify-icons.css"
+import "../../index.css"
+import "../../icon/themify-icons.css"
 import PropTypes from "prop-types";
 import "./loader.js"
 import $ from "jquery";
-import {i18n} from "../../i18n";
+import {i18n} from "../../../i18n";
 import {connect} from "react-redux";
-import {SwitchLang} from "../component/switch-lang";
+import {SwitchLang} from "../switch-lang";
+import logo from '../../images/LOGO2.png'
 
 class HeaderReact extends React.Component{
     static propTypes = {
@@ -44,7 +45,15 @@ class HeaderReact extends React.Component{
                                 <div className="col-9 col-lg-3">
                                     <div className="site-branding">
                                         <div>
-                                            <h1 className="site-title pointer" onClick={() => {this.props.history.push('/home');}}><a>May<span>flower</span></a></h1>
+                                            <h1 className="site-title pointer" onClick={() => {this.props.history.push('/home');}}>
+                                                <span>
+                                                    <img
+                                                        src={logo}
+                                                        style={{width:'35px', height:'41px', marginTop:'-15px', marginRight:'10px'}}
+                                                    />
+                                                </span>
+                                                <a>May<span>flower</span></a>
+                                            </h1>
                                         </div>
 
                                     </div>{/* .site-branding */}

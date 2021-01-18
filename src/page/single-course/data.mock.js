@@ -23,6 +23,14 @@ export const content = {
             content:[
                 'The Western Music History course explores the music of the 17th Century through the 21st Century. Focusing on the Baroque era, Classical era, Romantic era, 20th Century, and 21st Century of Western music. Musical concepts and developments, composers, musical examples, and class discussions will all be part of the 10-week course. '
             ]
+        },
+        {
+            id:'4',
+            name:'Aural Skills',
+            videoId: '',
+            content:[
+                'Aural skills is equally crucial as in Music Theory, which is  required for individual musicality. This course is a two-level studies focusing on ear training, sight-singing, rhythm, and dictation. The introductory course includes writing, singing, recognizing intervals/scales/melodies/chords, and simple chord progressions. The advanced level will focus more on complex rhythms, cluster listening, atonal melodies, alternative scales, and harmonic structures.'
+            ]
         }
     ]
 }

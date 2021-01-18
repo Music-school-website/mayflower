@@ -1,14 +1,15 @@
 import React from "react";
 //import {withRouter} from 'react-router-dom'
 import PropTypes from "prop-types";
-import "../index.css";
+import "../../index.css";
 import $ from 'jquery';
 import "./loader.js"
-import {i18n} from "../../i18n";
+import {i18n} from "../../../i18n";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
-import {SwitchLang} from "../component/switch-lang";
+import {SwitchLang} from "../switch-lang";
+import logo from "../../images/LOGO2.png";
 
 
 class PageHeaderReact extends React.Component{
@@ -109,7 +110,15 @@ class PageHeaderReact extends React.Component{
                                         <div className="row">
                                             <div className="col-9 col-lg-3">
                                                 <div className="site-branding">
-                                                    <h1 className="site-title pointer" onClick={() => {this.props.history.push('/home');}}><a>May<span>flower</span></a></h1>
+                                                    <h1 className="site-title pointer" onClick={() => {this.props.history.push('/home');}}>
+                                                        <span>
+                                                            <img
+                                                                src={logo}
+                                                                style={{width:'35px', height:'41px', marginTop:'-15px', marginRight:'10px'}}
+                                                            />
+                                                </span>
+                                                        <a>May<span>flower</span></a>
+                                                    </h1>
                                                 </div>
                                             </div>
                                             {/* .col */}

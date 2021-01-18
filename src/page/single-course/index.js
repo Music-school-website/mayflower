@@ -1,10 +1,10 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
-import "./index.css"
-import {PageHeader} from "../page-header";
+import "../index.css"
+import {PageHeader} from "../component/page-header";
 import YouTube from "react-youtube";
 //import {Footer} from "../footer";
-import author from "../images/user-1.jpg"
+import author from "../../images/user-1.jpg"
 import PropTypes from "prop-types";
 import {content} from "./data.mock"
 
