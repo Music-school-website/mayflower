@@ -1,0 +1,27 @@
+.name{
+
+
+}
+.prize{
+
+    font-style: italic;
+}
+.competition{
+    color:#D6A651;
+    font-weight: bolder;
+}
+table,th,td
+{
+    border:0;
+}
+.show-more{
+    text-decoration: underline;
+    color:#D6A651
+}
+.last-element{
+    background: #D6A651;
+    color: #fff
+}
+.last-element:hover{
+    background: #595959;
+}
