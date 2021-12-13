@@ -9,7 +9,8 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
 import {SwitchLang} from "../switch-lang";
-import logo from "../../images/LOGO2.png";
+
+
 
 
 class PageHeaderReact extends React.Component{
@@ -39,61 +40,7 @@ class PageHeaderReact extends React.Component{
     // handleToggle = () => {
     //
     // };
-    selected = (status,text) =>{
-        switch(status){
-            case 1:
-                return  <ul className="flex flex-column flex-lg-row justify-content-lg-end align-content-center pointer">
-                    <li className="current-menu-item" onClick={() => {this.props.history.push('/introduction');}}><a >{text.introduction}</a></li>
-                    <li onClick={() => {this.props.history.push('/course');}}><a >{text.course}</a></li>
-                    <li onClick={() => {this.props.history.push('/honor');}}><a >{text.honor}</a></li>
-                    <li onClick={() => {this.props.history.push('/foundation');}}><a >{text.foundation}</a></li>
-                    <li onClick={() => {this.props.history.push('/contact');}}><a >{text.contact}</a></li>
-                </ul>
-            case 2:
-                return  <ul className="flex flex-column flex-lg-row justify-content-lg-end align-content-center pointer">
-                    <li onClick={() => {this.props.history.push('/introduction');}}><a >{text.introduction}</a></li>
-                    <li onClick={() => {this.props.history.push('/course');}} className="current-menu-item"><a >{text.course}</a></li>
-                    <li onClick={() => {this.props.history.push('/honor');}}><a >{text.honor}</a></li>
-                    <li onClick={() => {this.props.history.push('/foundation');}}><a >{text.foundation}</a></li>
-                    <li onClick={() => {this.props.history.push('/contact');}}><a >{text.contact}</a></li>
-                </ul>
-            case 3:
-                return  <ul className="flex flex-column flex-lg-row justify-content-lg-end align-content-center pointer">
-                    <li onClick={() => {this.props.history.push('/introduction');}}><a >{text.introduction}</a></li>
-                    <li onClick={() => {this.props.history.push('/course');}}><a >{text.course}</a></li>
-                    <li onClick={() => {this.props.history.push('/honor');}}><a>{text.honor}</a></li>
-                    <li onClick={() => {this.props.history.push('/foundation');}}><a>{text.foundation}</a></li>
-                    <li onClick={() => {this.props.history.push('/contact');}}><a>{text.contact}</a></li>
-                </ul>
-            case 4:
-                return  <ul className="flex flex-column flex-lg-row justify-content-lg-end align-content-center pointer">
-                    <li onClick={() => {this.props.history.push('/introduction');}}><a >{text.introduction}</a></li>
-                    <li onClick={() => {this.props.history.push('/course');}}><a >{text.course}</a></li>
-                    <li onClick={() => {this.props.history.push('/honor');}} className="current-menu-item"><a >{text.honor}</a></li>
-                    <li onClick={() => {this.props.history.push('/foundation');}}><a >{text.foundation}</a></li>
-                    <li onClick={() => {this.props.history.push('/contact');}}><a >{text.contact}</a></li>
-                </ul>
-            case 5:
-                return  <ul className="flex flex-column flex-lg-row justify-content-lg-end align-content-center pointer">
-                    <li onClick={() => {this.props.history.push('/introduction');}}><a >{text.introduction}</a></li>
-                    <li onClick={() => {this.props.history.push('/course');}}><a >{text.course}</a></li>
-                    <li onClick={() => {this.props.history.push('/honor');}}><a >{text.honor}</a></li>
-                    <li className="current-menu-item"onClick={() => {this.props.history.push('/foundation');}}><a >{text.foundation}</a></li>
-                    <li onClick={() => {this.props.history.push('/contact');}}><a >{text.contact}</a></li>
-                </ul>
-            case 6:
-                return  <ul className="flex flex-column flex-lg-row justify-content-lg-end align-content-center pointer">
-                    <li onClick={() => {this.props.history.push('/introduction');}}><a >{text.introduction}</a></li>
-                    <li onClick={() => {this.props.history.push('/course');}}><a >{text.course}</a></li>
-                    <li onClick={() => {this.props.history.push('/honor');}}><a >{text.honor}</a></li>
-                    <li onClick={() => {this.props.history.push('/foundation');}}><a >{text.foundation}</a></li>
-                    <li onClick={() => {this.props.history.push('/contact');}} className="current-menu-item"><a >{text.contact}</a></li>
-                </ul>
-        }
 
-
-
-    }
     render() {
         const text = i18n(this.props.language).page.pageHeader
         //console.log(text)
@@ -110,22 +57,40 @@ class PageHeaderReact extends React.Component{
                                         <div className="row">
                                             <div className="col-9 col-lg-3">
                                                 <div className="site-branding">
-                                                    <h1 className="site-title pointer" onClick={() => {this.props.history.push('/home');}}>
-                                                        <span>
-                                                            <img
-                                                                src={logo}
-                                                                style={{width:'35px', height:'41px', marginTop:'-15px', marginRight:'10px'}}
-                                                            />
-                                                </span>
-                                                        <a>May<span>flower</span></a>
-                                                    </h1>
+                                                    <div className="flex">
+                                                        <div className="site-title pointer flex" onClick={() => {this.props.history.push('/home');}}>
+                                                            <div>
+                                                                <img
+                                                                    src="https://mayflower.s3.amazonaws.com/logo2.png"
+                                                                    style={{width:'50px', height:'50px', marginTop:'-15px'}}
+                                                                />
+                                                            </div>
+                                                            <div className="text-gradient"><a>Mayflower</a></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             {/* .col */}
                                             <div
                                                 className="col-3 col-lg-9 flex align-content-center">
                                                 <nav className="site-navigation flex justify-content-end align-items-center">
-                                                    {this.selected(this.props.status, text)}
+                                                    <ul>
+                                                        <ol>
+                                                            <li className="menu-item" onClick={() => {this.props.history.push('/introduction');}}><a>{text.introduction}</a></li>
+                                                            <li  className="menu-item" aria-haspopup="true">
+                                                                <a >{text.program}</a>
+                                                                <ol className="sub-menu" aria-label="submenu">
+                                                                    <li className="menu-item" onClick={() => {this.props.history.push('/course');}}><a>{text.course}</a></li>
+                                                                    <li className="menu-item" onClick={() => {this.props.history.push('/music-production');}}><a>{text.musicProduction}</a></li>
+                                                                    <li className="menu-item" onClick={() => {this.props.history.push('/oversea');}}><a >{text.oversea}</a></li>
+                                                                </ol>
+                                                            </li>
+                                                            <li className="menu-item" onClick={() => {this.props.history.push('/honor');}}><a >{text.honor}</a></li>
+                                                            <li className="menu-item" onClick={() => {this.props.history.push('/news');}}><a>{text.news}</a></li>
+                                                            <li className="menu-item" onClick={() => {this.props.history.push('/foundation'); }} ><a>{text.foundation}</a></li>
+                                                            <li className="menu-item" onClick={() => {this.props.history.push('/contact');}} ><a>{text.contact}</a></li>
+                                                        </ol>
+                                                    </ul>
                                                     <div className="hamburger-menu d-lg-none">
                                                         <span/>
                                                         <span/>

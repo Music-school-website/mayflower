@@ -1,3 +1,3 @@
 export const initState = {
-    language:'en'
+    language:'zh'
 };

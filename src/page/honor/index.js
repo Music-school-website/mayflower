@@ -55,16 +55,16 @@ class HonorReact extends React.Component{
                                     return(
                                         <VerticalTimelineElement
                                             className="vertical-timeline-element--work"
-                                            contentStyle={{ borderTop: '5px solid  rgb(238, 120, 10)'}}
+                                            contentStyle={{ borderTop: '5px solid  #D6A651'}}
                                             // contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
                                             date={item.date}
                                             key={index}
-                                            iconStyle={{ background: 'rgb(238, 120, 10)', color: '#fff' }}
+                                            iconStyle={{ background: '#D6A651', color: '#fff' }}
                                             icon={<BsFillLayersFill/>}
                                         >
                                             <div className="row">
                                                 <table className="ml-3">
-                                                    <tr className="competition">
+                                                    <tr className="competition" style={{color:'#D6A651'}}>
                                                         {item.competition}
                                                     </tr>
                                                     {item.prize.map((item, index)=>{
@@ -86,7 +86,7 @@ class HonorReact extends React.Component{
                                         window.scrollTo(0, 0);
                                     }}>
                                     <VerticalTimelineElement
-                                        contentStyle={{ background: 'rgb(238, 120, 10)', color: '#fff' }}
+                                        contentStyle={{ background: '#D6A651', color: '#fff' }}
                                         iconStyle={{ background: 'rgb(56,55,73)', color: '#fff' }}
                                         icon={<BsMusicNote/>}
                                         className="pointer"

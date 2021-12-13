@@ -2,7 +2,7 @@ import React from "react";
 import {withRouter} from 'react-router-dom'
 import "./index.css"
 import {PageHeader} from "../component/page-header";
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+
 import {i18n} from "../../i18n";
 import {connect} from "react-redux";
 import {Breadcrumbs} from "../component/breadcrumbs";
@@ -10,13 +10,13 @@ import {Breadcrumbs} from "../component/breadcrumbs";
 //import news8 from "../images/news8.png"
 import {Footer} from "../component/footer";
 //import { IoAddOutline } from "react-icons/io5";
-import { BsFillLayersFill, BsMusicNote} from "react-icons/bs";
-import {honor} from './honor.mock'
+
+
 import PropTypes from "prop-types";
 
 
 
-class HonorReact extends React.Component{
+class NewsReact extends React.Component{
     static propTypes = {
         // self
         // React Redux
@@ -39,65 +39,51 @@ class HonorReact extends React.Component{
     //     })
     // }
     render() {
-        const text = i18n(this.props.language).page.honor
+        const text = i18n(this.props.language).page.news
+        const content = text.content
         return (
             <div>
                 <div className="blog-page" style={{background:'#f7f7f7'}}>
-                    <PageHeader status = {4}/>
+                    <PageHeader status = {7}/>
                     <div  className="container">
                         <Breadcrumbs breadcrumbs={text.breadcrumb}/>
-                        <div className="col-12">
-                            <VerticalTimeline
-                                className="vertical-timeline--one-column-left"
-                                layout = {'1-column-left'}
-                            >
-                                {honor && honor.map((item, index)=>{
-                                    return(
-                                        <VerticalTimelineElement
-                                            className="vertical-timeline-element--work"
-                                            contentStyle={{ borderTop: '5px solid  #D6A651'}}
-                                            // contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-                                            date={item.date}
-                                            key={index}
-                                            iconStyle={{ background: '#D6A651', color: '#fff' }}
-                                            icon={<BsFillLayersFill/>}
-                                        >
-                                            <div className="row">
-                                                <table className="ml-3">
-                                                    <tr className="competition" style={{color:'#D6A651'}}>
-                                                        {item.competition}
-                                                    </tr>
-                                                    {item.prize.map((item, index)=>{
-                                                        return(
-                                                            <tr className="prize" key={index}>
-                                                                {item}
-                                                            </tr>
-                                                        )
-                                                    })}
-                                                </table>
-                                            </div>
-                                        </VerticalTimelineElement>
-                                    )
+                        <section className="latest-news-events">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <header className="heading flex justify-content-between align-items-center">
+                                            <h2 className="entry-title">Latest News &amp; Events</h2>
+                                        </header>{/* .heading */}
+                                    </div>{/* .col */}
 
-                                })}
-                                <div
-                                    onClick={()=>{
-                                        this.props.history.push('/place')
-                                        window.scrollTo(0, 0);
-                                    }}>
-                                    <VerticalTimelineElement
-                                        contentStyle={{ background: '#D6A651', color: '#fff' }}
-                                        iconStyle={{ background: 'rgb(56,55,73)', color: '#fff' }}
-                                        icon={<BsMusicNote/>}
-                                        className="pointer"
-                                    >
-                                        Show all of our honors
-                                    </VerticalTimelineElement>
-                                </div>
+                                    <div className="col-12 col-lg-12 mt-2 mt-lg-0">
+                                        {content.map((item, index)=>{
+                                            return(
+                                                <div
+                                                    className="event-content flex flex-wrap justify-content-between align-content-stretch "
+                                                    key={index}
+                                                    onClick={()=>{
+                                                        this.props.history.push(`/news_detail/${item.id}`)
+                                                    }}
+                                                >
+                                                    <div className="event-content-wrap mt-5">
+                                                        <header className="entry-header">
+                                                            <div className="posted-date">
+                                                                <i className="fa fa-calendar" /> {item.date}
+                                                            </div>{/* .posted-date */}
+                                                            <h2 className="entry-title"><a>{item.title}</a></h2>
+                                                        </header>{/* .entry-header */}
+                                                        <div className="entry-content">
+                                                            <p>{item.summary}</p>
+                                                        </div>{/* .entry-content */}
+                                                    </div>
+                                                </div>)
 
-
-                            </VerticalTimeline>
-                        </div>
+                                        })}
+                                    </div>{/* .col */}
+                                </div>{/* .row */}
+                            </div>{/* .container */}
+                        </section>{/* .latest-news-events */}
 
                     </div>
                     <Footer/>
@@ -107,9 +93,9 @@ class HonorReact extends React.Component{
         )
     }
 }
-export const Honor = withRouter(
+export const News = withRouter(
     connect((state)=>{
         return{language:state.language}
-    })(HonorReact)
+    })(NewsReact)
 )
 //export const Honor = withRouter(HonorReact)

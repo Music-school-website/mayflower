@@ -6,17 +6,16 @@ import {PageHeader} from "../component/page-header";
 import {i18n} from "../../i18n";
 import {connect} from "react-redux";
 import {Breadcrumbs} from "../component/breadcrumbs";
-//import news5 from "../images/news5.png";
-//import news8 from "../images/news8.png"
 import {Footer} from "../component/footer";
-//import { IoAddOutline } from "react-icons/io5";
-
-
+import {Table} from "react-bootstrap"
+import FileViewer from 'react-file-viewer';
+// import { CustomErrorComponent } from 'custom-error';
 import PropTypes from "prop-types";
 
 
 
-class NewsReact extends React.Component{
+
+class NewsDetailReact extends React.Component{
     static propTypes = {
         // self
         // React Redux
@@ -25,7 +24,8 @@ class NewsReact extends React.Component{
         status: PropTypes.number.isRequired,
         match: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired
+        location: PropTypes.object.isRequired,
+        id: PropTypes.string.isRequired,
     };
     constructor(props) {
         super(props);
@@ -33,14 +33,115 @@ class NewsReact extends React.Component{
             // honor:[]
         }
     }
-    // componentDidMount() {
-    //     this.setState({
-    //         honor:honor
-    //     })
-    // }
+    onlyTextNews = (content, item) =>{
+        return(
+            <div className="col-12 col-lg-12 mt-2 mt-lg-0">
+                <div className="event-content flex flex-wrap justify-content-between align-content-stretch ">
+                    <div className="event-content-wrap mt-5">
+                        <header className="entry-header">
+                            <div className="posted-date">
+                                <i className="fa fa-calendar" /> {item.date}
+                            </div>{/* .posted-date */}
+                            <h2 className="entry-title"><a>{item.title}</a></h2>
+                        </header>{/* .entry-header */}
+                        <div className="entry-content" >
+                            <div
+                                className="content"
+                                dangerouslySetInnerHTML={{ __html: item.content.text}}
+                            />
+                        </div>{/* .entry-content */}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    textAndFormNews = (content, item) =>{
+        return(
+            <div className="col-12 col-lg-12 mt-2 mt-lg-0">
+                <div className="event-content flex flex-wrap justify-content-between align-content-stretch ">
+                    <div className="event-content-wrap mt-5">
+                        <header className="entry-header">
+                            <div className="posted-date">
+                                <i className="fa fa-calendar" /> {item.date}
+                            </div>{/* .posted-date */}
+                            <h2 className="entry-title"><a>{item.title}</a></h2>
+                        </header>{/* .entry-header */}
+                        <div className="entry-content">
+                            <div
+                                className="content mb-5"
+                                dangerouslySetInnerHTML={{ __html: item.content.text}}
+                            />
+                            <Table striped bordered hover>
+                                <thead>
+                                <tr>
+                                    {content.formData.header.map((item, index)=>{
+                                        return <th key={index}>{item}</th>
+                                    })}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {content.formData.content.map((item, index)=>{
+                                    return(
+                                        <tr key = {index}>
+                                            <td>{item.id}</td>
+                                            <td>{item.category}</td>
+                                            <td>{item.name}</td>
+                                            <td>{item.place}</td>
+                                            <td>{item.instructor}</td>
+                                        </tr>
+                                    )
+                                })}
+                                </tbody>
+                            </Table>
+                        </div>{/* .entry-content */}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    mutiNews = (lang) =>{
+
+        if (lang === 'CN') {
+            const file = 'https://mayflower.s3.amazonaws.com/%E8%A5%BF%E8%B4%9D%E6%9F%B3%E6%96%AF.docx'
+            const type = 'docx'
+            return (
+                <div style={{width:'100%'}}>
+                <FileViewer
+                    fileType={type}
+                    filePath={file}
+                />
+                </div>
+            );
+        }
+        else {
+            const file = 'https://mayflower.s3.amazonaws.com/JSFest.docx'
+            const type = 'docx'
+            return (
+                <div style={{width:'100%'}}>
+                <FileViewer
+                    fileType={type}
+                    filePath={file}
+                />
+                </div>
+            );
+        }
+
+    }
+    switchRender = (id, content, item) =>{
+        switch(id) {
+            case 3: return this.textAndFormNews(content, item)
+            case 5: return this.mutiNews(content.text)
+            default: return this.onlyTextNews(content, item)
+        }
+    }
+
     render() {
+        const id =  parseInt(this.props.match.params.id) - 1
+
         const text = i18n(this.props.language).page.news
-        const content = text.content
+        const item = text.content[id]
+        const content = text.content[id].content
         return (
             <div>
                 <div className="blog-page" style={{background:'#f7f7f7'}}>
@@ -50,37 +151,7 @@ class NewsReact extends React.Component{
                         <section className="latest-news-events">
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-12">
-                                        <header className="heading flex justify-content-between align-items-center">
-                                            <h2 className="entry-title">Latest News &amp; Events</h2>
-                                        </header>{/* .heading */}
-                                    </div>{/* .col */}
-
-                                    <div className="col-12 col-lg-12 mt-2 mt-lg-0">
-                                        {content.map((item, index)=>{
-                                            return(
-                                                <div
-                                                    className="event-content flex flex-wrap justify-content-between align-content-stretch "
-                                                    key={index}
-                                                    onClick={()=>{
-                                                        this.props.history.push(`/news_detail/${item.id}`)
-                                                    }}
-                                                >
-                                                    <div className="event-content-wrap mt-5">
-                                                        <header className="entry-header">
-                                                            <div className="posted-date">
-                                                                <i className="fa fa-calendar" /> {item.date}
-                                                            </div>{/* .posted-date */}
-                                                            <h2 className="entry-title"><a>{item.title}</a></h2>
-                                                        </header>{/* .entry-header */}
-                                                        <div className="entry-content">
-                                                            <p>{item.summary}</p>
-                                                        </div>{/* .entry-content */}
-                                                    </div>
-                                                </div>)
-
-                                        })}
-                                    </div>{/* .col */}
+                                        {this.switchRender(id, content, item)}
                                 </div>{/* .row */}
                             </div>{/* .container */}
                         </section>{/* .latest-news-events */}
@@ -93,9 +164,9 @@ class NewsReact extends React.Component{
         )
     }
 }
-export const News = withRouter(
+export const NewsDetail = withRouter(
     connect((state)=>{
         return{language:state.language}
-    })(NewsReact)
+    })(NewsDetailReact)
 )
 //export const Honor = withRouter(HonorReact)

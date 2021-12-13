@@ -8,8 +8,7 @@ import {Breadcrumbs} from "../component/breadcrumbs";
 //import {Footer} from "../footer";
 //import {PageHeader} from "../page-header";
 //import {Footer} from "../footer";
-import about from "../images/intro.png"
-import side from "../images/side.png"
+
 import PropTypes from "prop-types";
 
 //import user from "../images/user-1.jpg"
@@ -19,6 +18,7 @@ class IntroReact extends React.Component{
         // React Redux
         language: PropTypes.string.isRequired,
         // React Router
+        history: PropTypes.object.isRequired,
     };
     constructor(props) {
         super(props);
@@ -32,9 +32,9 @@ class IntroReact extends React.Component{
             <div>
                 <div className="about-page">
                     <PageHeader status = {1}/>
-                    <div style={{position:'fixed',top:'120px', right:'200px',zIndex:'-9999',opacity:'0.4',
+                    <div style={{position:'fixed',top:'200px', left:'200px',zIndex:'-9999',opacity:'0.4',
                         filter:'alpha(opacity=40)',width:'400px', height:'auto'}}>
-                        <img src={side}/>
+                        <img src='https://mayflower.s3.amazonaws.com/new2.png'/>
                     </div>
                     <div className="container">
                         <div className="row">
@@ -64,36 +64,44 @@ class IntroReact extends React.Component{
                         <div className="container">
                             <div className="row">
                                 <div className="col-12 col-lg-6 align-content-lg-stretch">
-                                    <header className="heading">
-                                        <h2 className="entry-title">About Our School</h2>
-                                       <p>
-                                           The Mayflower art center provides students with courses on Composition, Music Theory, and Western Music History. These courses are the most professional in part-time music learning and college prep courses for most conservatories in the United States. (Instrumental performance courses will be gradually added as well in the future.)
-                                       </p>
-                                    </header>{/* .heading */}
+                                    <div className="d-flex about-stories">
+                                        <header className="heading">
+                                            {text.about}
+                                        </header>
+
+                                    </div>
+
                                     <div className="entry-content ezuca-stats">
                                         <div className="stats-wrap flex flex-wrap justify-content-lg-between">
-                                            <div className="stats-count">
+                                            <div className="stats-count" onClick={() => {this.props.history.push('/contact');}}>
                                                 <span>Join us</span>
                                                 <p>STUDENTS LEARNING</p>
                                             </div>{/* .stats-count */}
-                                            <div className="stats-count">
+                                            <div className="stats-count" onClick={() => {this.props.history.push('/course');}}>
                                                 <span>International</span>
                                                 <p>ACTIVE COURSES</p>
                                             </div>{/* .stats-count */}
-                                            {/*<div className="stats-count">*/}
-                                            {/*    340<span>M+</span>*/}
-                                            {/*    <p>INSTRUCTORS ONLINE</p>*/}
-                                            {/*</div>/!* .stats-count *!/*/}
-                                            {/*<div className="stats-count">*/}
-                                            {/*    20<span>+</span>*/}
-                                            {/*    <p>Country Reached</p>*/}
-                                            {/*</div>/!* .stats-count *!/*/}
                                         </div>{/* .stats-wrap */}
                                     </div>{/* .MusicSchool-stats */}
                                 </div>{/* .col */}
-                                <div className="col-12 col-lg-6 flex align-content-center mt-5 mt-lg-0">
+                                <div className="col-12 col-lg-6 align-content-center mt-5 mt-lg-0">
+                                    <div className='intro_teacher flex justify-content-center align-items-center'>
+                                        {text.teacher.map((item, index)=>{
+                                            return <div
+                                                style={{textAlign:'center',padding:'0 10px', cursor:'pointer'}}
+                                                onClick={() => {this.props.history.push(`/teacher/${item.id}`);}}
+                                                key = {index}
+                                            >
+                                                <h5>{item.position}</h5>
+                                                <img src={item.avator}/>
+                                                <p>{item.name}</p>
+                                            </div>
+                                        })}
+
+                                    </div>
+
                                     <div className="ezuca-video position-relative">
-                                        <img src={about} alt="" style={{height:'500px', width:'auto'}}/>
+                                        <img src='https://mayflower.s3.amazonaws.com/new2.png' alt="" style={{height:'500px', width:'auto'}}/>
                                     </div>{/* .MusicSchool-video */}
                                 </div>{/* .col */}
                             </div>{/* .row */}

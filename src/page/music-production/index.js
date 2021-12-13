@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {Breadcrumbs} from "../component/breadcrumbs";
 import PropTypes from "prop-types";
 
-class FoundReact extends React.Component{
+class MusicProductionReact extends React.Component{
     static propTypes = {
         // self
         // React Redux
@@ -21,7 +21,7 @@ class FoundReact extends React.Component{
         }
     }
     render() {
-        const text = i18n(this.props.language).page.foundation
+        const text = i18n(this.props.language).page.musicProduction
         return (
             <div>
                 <div className="about-page">
@@ -41,18 +41,7 @@ class FoundReact extends React.Component{
                                             dangerouslySetInnerHTML={{ __html: text.content}}
                                         />
                                     </header>{/* .heading */}
-                                    <div className="entry-content ezuca-stats">
-                                        <div className="stats-wrap flex flex-wrap justify-content-lg-between">
-                                            <div className="stats-count">
-                                                <span>Join us</span>
-                                                <p>STUDENTS LEARNING</p>
-                                            </div>{/* .stats-count */}
-                                            <div className="stats-count">
-                                                <span>International</span>
-                                                <p>ACTIVE COURSES</p>
-                                            </div>{/* .stats-count */}
-                                        </div>{/* .stats-wrap */}
-                                    </div>{/* .MusicSchool-stats */}
+
                                 </div>{/* .col */}
                                 <div className="col-12 col-lg-4 flex align-content-center mt-5 mt-lg-0">
                                     <div className="ezuca-video position-relative">
@@ -69,9 +58,9 @@ class FoundReact extends React.Component{
         )
     }
 }
-export const Found = withRouter(
+export const MusicProduction = withRouter(
     connect((state)=>{
         return{language:state.language}
-    })(FoundReact)
+    })(MusicProductionReact)
 )
 //export const Found = withRouter(FoundReact)

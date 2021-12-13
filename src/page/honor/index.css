@@ -7,7 +7,7 @@
     font-style: italic;
 }
 .competition{
-    color:#ee780a;
+    color:#D6A651;
     font-weight: bolder;
 }
 table,th,td
@@ -16,10 +16,10 @@ table,th,td
 }
 .show-more{
     text-decoration: underline;
-    color:#ee780a
+    color:#D6A651
 }
 .last-element{
-    background: rgb(238, 120, 10);
+    background: #D6A651;
     color: #fff
 }
 .last-element:hover{

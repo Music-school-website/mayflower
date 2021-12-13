@@ -2,7 +2,6 @@ import React from "react";
 import {withRouter} from 'react-router-dom'
 import "../index.css"
 import {PageHeader} from "../component/page-header";
-import contact from "../images/contact.png";
 import {i18n} from "../../i18n";
 import {connect} from "react-redux";
 import {Breadcrumbs} from "../component/breadcrumbs";
@@ -28,10 +27,10 @@ class ContactReact extends React.Component{
         return (
             <div>
                 <PageHeader status = {6}/>
-                <div style={{position:'fixed',top:'80px', left:'40%', right:"30%",zIndex:'-9999',opacity:'0.4',
+                <div style={{position:'fixed',top:'-1200px', left:'1%',zIndex:'-9999',opacity:'0.4',
                     filter:'alpha(opacity=40)'}}>
                     <img
-                        src={contact}
+                        src='https://mayflower.s3.amazonaws.com/new4.png'
                         // style={{width:'900px', height:'900px'}}
                     />
                 </div>
@@ -49,12 +48,15 @@ class ContactReact extends React.Component{
                         <div className="col-12 offset-lg-3 col-lg-6">
                             <div className="contact-info">
                                 <h3>Contact Information</h3>
-                                {/*<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum. </p>*/}
+
                                 <ul className="p-0 m-0">
                                     <li><span>Location:</span>Maryland, US</li>
                                     <li><span>Email:</span><a href="#">2019mayflowerartcenter@gmail.com</a></li>
+                                    <li>
+                                        <img src='https://mayflower.s3.amazonaws.com/code.jpg' style={{width:'400px'}}/>
+                                    </li>
                                 </ul>
-                            </div>{/* .contact-info */}
+                            </div>
                         </div>{/* .col */}
                     </div>{/* .row */}
                 </div>{/* .container */}

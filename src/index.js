@@ -11,11 +11,15 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'react-vertical-timeline-component/style.min.css';
 
 import {BrowserRouter as Router} from "react-router-dom";
+import {ScrollTop} from "./page/component/scroll-top";
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <App />
+            <ScrollTop>
+                <App />
+            </ScrollTop>
+
         </Router>
     </React.StrictMode>,
     document.getElementById('root')

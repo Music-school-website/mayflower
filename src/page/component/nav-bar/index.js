@@ -8,7 +8,7 @@ import $ from "jquery";
 import {i18n} from "../../../i18n";
 import {connect} from "react-redux";
 import {SwitchLang} from "../switch-lang";
-import logo from '../../images/LOGO2.png'
+
 
 class HeaderReact extends React.Component{
     static propTypes = {
@@ -25,7 +25,8 @@ class HeaderReact extends React.Component{
         super(props);
         this.state = {
 
-        }
+        };
+
     }
     componentDidMount() {
         $( '.hamburger-menu' ).on( 'click', function() {
@@ -33,6 +34,7 @@ class HeaderReact extends React.Component{
             $('.site-navigation').toggleClass('show');
         });
     }
+
     render() {
         const text = i18n(this.props.language).page.pageHeader
         return (
@@ -44,41 +46,53 @@ class HeaderReact extends React.Component{
                             <div className="row">
                                 <div className="col-9 col-lg-3">
                                     <div className="site-branding">
-                                        <div>
-                                            <h1 className="site-title pointer" onClick={() => {this.props.history.push('/home');}}>
-                                                <span>
+                                        <div className="flex">
+                                            <div className="site-title pointer flex" onClick={() => {this.props.history.push('/home');}}>
+                                                <div>
                                                     <img
-                                                        src={logo}
-                                                        style={{width:'35px', height:'41px', marginTop:'-15px', marginRight:'10px'}}
+                                                        src="https://mayflower.s3.amazonaws.com/logo2.png"
+                                                        style={{width:'50px', height:'50px', marginTop:'-15px'}}
                                                     />
-                                                </span>
-                                                <a>May<span>flower</span></a>
-                                            </h1>
+                                                </div>
+                                                <div className="text-gradient"><a>Mayflower</a></div>
+                                            </div>
                                         </div>
 
                                     </div>{/* .site-branding */}
-                                </div>{/* .col */}
+                                </div>
                                 <div className="col-3 col-lg-9 flex align-content-center">
                                     <nav className="site-navigation flex justify-content-end align-items-center">
-                                        <ul className="flex flex-column flex-lg-row justify-content-lg-end align-content-center pointer">
-                                            <li onClick={() => {this.props.history.push('/introduction');}}><a>{text.introduction}</a></li>
-                                            <li onClick={() => {this.props.history.push('/course');}}><a >{text.course}</a></li>
-                                            <li onClick={() => {this.props.history.push('/honor');}}><a >{text.honor}</a></li>
-                                            <li onClick={() => {this.props.history.push('/foundation');}}><a>{text.foundation}</a></li>
-                                            <li onClick={() => {this.props.history.push('/contact');}}><a >{text.contact}</a></li>
+                                        <ul>
+                                            <ol>
+                                                <li className="menu-item" onClick={() => {this.props.history.push('/introduction');}}><a>{text.introduction}</a></li>
+                                                <li  className="menu-item" aria-haspopup="true">
+                                                    <a >{text.program}</a>
+                                                    <ol className="sub-menu" aria-label="submenu">
+                                                        <li className="menu-item" onClick={() => {this.props.history.push('/course');}}><a>{text.course}</a></li>
+                                                        <li className="menu-item" onClick={() => {this.props.history.push('/music-production');}}><a>{text.musicProduction}</a></li>
+                                                        <li className="menu-item" onClick={() => {this.props.history.push('/oversea');}}><a >{text.oversea}</a></li>
+                                                    </ol>
+                                                </li>
+                                                <li className="menu-item" onClick={() => {this.props.history.push('/honor');}}><a >{text.honor}</a></li>
+                                                <li className="menu-item" onClick={() => {this.props.history.push('/news');}}><a>{text.news}</a></li>
+                                                <li className="menu-item" onClick={() => {this.props.history.push('/foundation'); }} ><a>{text.foundation}</a></li>
+                                                <li className="menu-item" onClick={() => {this.props.history.push('/contact');}} ><a>{text.contact}</a></li>
+                                            </ol>
                                         </ul>
                                         <div className="hamburger-menu d-lg-none">
                                             <span />
                                             <span />
                                             <span />
                                             <span />
-                                        </div>{/* .hamburger-menu */}
-                                    </nav>{/* .site-navigation */}
-                                </div>{/* .col */}
-                            </div>{/* .row */}
-                        </div>{/* .container */}
-                    </div>{/* .nav-bar */}
-                </header>{/* .site-header */}
+                                        </div>
+                                    </nav>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </header>
             </div>
 
         )

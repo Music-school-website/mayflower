@@ -20,7 +20,7 @@ class FooterReact extends React.Component{
                                 <div className="col-12 col-md-6 col-lg-3">
                                     <div className="foot-about">
                                         <h2>Mayflower</h2>
-                                        <p>The Mayflower art center provides students with courses on Composition, Music Theory, and Western Music History.  </p>
+                                        <p>The May Flower Art Center is a music school founded in the United States. The three components of The May Flower Art Center are: music courses, overseas music education agency, and music production. </p>
                                         <p className="footer-copyright">{/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
                                             Copyright © All rights reserved
                                             {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}</p>
@@ -53,17 +53,7 @@ class FooterReact extends React.Component{
                                         </ul>
                                     </div>{/* .quick-links */}
                                 </div>{/* .col */}
-                                {/*<div className="col-12 col-md-6 col-lg-3 mt-5 mt-lg-0">*/}
-                                {/*    <div className="follow-us">*/}
-                                {/*        <h2>Follow Us</h2>*/}
-                                {/*        <ul className="follow-us flex flex-wrap align-items-center">*/}
-                                {/*            <li><a href="#"><i className="fa fa-facebook" /></a></li>*/}
-                                {/*            <li><a href="#"><i className="fa fa-google-plus" /></a></li>*/}
-                                {/*            <li><a href="#"><i className="fa fa-instagram" /></a></li>*/}
-                                {/*            <li><a href="#"><i className="fa fa-twitter" /></a></li>*/}
-                                {/*        </ul>*/}
-                                {/*    </div>/!* .quick-links *!/*/}
-                                {/*</div>/!* .col *!/*/}
+
                             </div>{/* .row */}
                         </div>{/* .container */}
                     </div>{/* .footer-widgets */}

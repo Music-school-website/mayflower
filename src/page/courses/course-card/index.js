@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import "../../index.css"
 import PropTypes from "prop-types";
 
+
 class CourseCardReact extends React.Component{
     static propTypes = {
         match: PropTypes.object.isRequired,
@@ -30,26 +31,20 @@ class CourseCardReact extends React.Component{
                         </figure>{/* .course-thumbnail */}
                         <div className="course-content-wrap">
                             <header className="entry-header">
-                                <h2 className="entry-title"><a href="#">{this.props.name}</a></h2>
-                                <div className="entry-meta flex align-items-center">
-                                    <div className="course-author"><a href="#">{this.props.teacher}</a></div>
-                                    {/*<div className="course-date">July 21, 2018</div>*/}
+                                <h2 className="entry-title">{this.props.name}</h2>
+                                <div className="entry-meta flex flex-wrap align-items-center">
+                                    {this.props.teacher.map((item, index)=>{
+                                        if (this.props.teacher.length > 1 && index < this.props.teacher.length-1) {
+                                            return  <span className="course-author" key={index}>{item.name},  </span>
+                                        }
+                                        else{
+                                            return  <span className="course-author" key={index}>{item.name}</span>
+                                        }
+
+                                    })}
                                 </div>{/* .course-date */}
                             </header>{/* .entry-header */}
                             <div>{this.props.content}</div>
-                            {/*<footer className="entry-footer flex justify-content-between align-items-center">*/}
-                            {/*    <div className="course-cost">*/}
-                            {/*        $45 <span className="price-drop">$68</span>*/}
-                            {/*    </div>/!* .course-cost *!/*/}
-                            {/*    <div className="course-ratings flex justify-content-end align-items-center">*/}
-                            {/*        <span className="fa fa-star checked" />*/}
-                            {/*        <span className="fa fa-star checked" />*/}
-                            {/*        <span className="fa fa-star checked" />*/}
-                            {/*        <span className="fa fa-star checked" />*/}
-                            {/*        <span className="fa fa-star-o" />*/}
-                            {/*        <span className="course-ratings-count">(4 votes)</span>*/}
-                            {/*    </div>/!* .course-ratings *!/*/}
-                            {/*</footer>/!* .entry-footer *!/*/}
                         </div>{/* .course-content-wrap */}
                     </div>{/* .course-content */}
                 </div>
